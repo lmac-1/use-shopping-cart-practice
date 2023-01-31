@@ -13,7 +13,7 @@ export default function Layout({ children }: PropsWithChildren<any>) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="container mx-auto px-10">{children}</main>
+      <main className="container mx-auto px-10 mt-5">{children}</main>
     </>
   );
 }
