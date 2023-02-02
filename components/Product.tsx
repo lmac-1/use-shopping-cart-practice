@@ -9,7 +9,9 @@ export default function Product({ product }: { product: ProductType }) {
   } = useShoppingCart();
   return (
     <article className="flex flex-col p-8 shadow-lg gap-3 text-center bg-white rounded-xl mb-6">
-      <div className="text-8xl">{product.emoji}</div>
+      <div className="text-8xl transition-[font-size] hover:text-[110px] h-[120px]">
+        {product.emoji}
+      </div>
       <div className="text-lg">{product.name}</div>
       <div className="text-2xl font-semibold">
         {formatCurrencyString({
