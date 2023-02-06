@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { PropsWithChildren } from "react";
 import NavBar from "./NavBar";
+import ShoppingCart from "./ShoppingCart";
 
 export default function Layout({ children }: PropsWithChildren<any>) {
   return (
@@ -15,6 +16,7 @@ export default function Layout({ children }: PropsWithChildren<any>) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
+      <ShoppingCart />
       <main className="px-10 bg-slate-50 py-8">
         <div className="container mx-auto">{children}</div>
       </main>

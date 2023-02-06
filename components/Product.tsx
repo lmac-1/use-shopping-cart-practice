@@ -9,7 +9,9 @@ export default function Product({ product }: { product: ProductType }) {
   const [quantity, setQuantity] = useState(1);
 
   const addToCart = () => {
-    addItem(product, { count: quantity });
+    addItem(product, {
+      count: quantity,
+    });
     setQuantity(1);
   };
 
