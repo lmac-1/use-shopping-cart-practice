@@ -12,13 +12,12 @@ export default function ShoppingCart() {
   } = useShoppingCart();
 
   const cartEntries = Object.values(cartDetails ?? {}).map((entry) => (
-    /* todo: raise issue for removeItem type */
     <CartEntry key={entry.id} entry={entry} removeItem={removeItem} />
   ));
 
   return (
     <div
-      className={`top-0 right-0 w-screen md:w-[35vw] bg-white px-5 fixed h-full z-40 ease-in-out duration-300 ${
+      className={`top-0 bottom-0 right-0 w-screen sm:w-96 bg-white px-5 fixed h-full z-40 ease-in-out duration-300 overflow-y-scroll ${
         shouldDisplayCart
           ? "translate-x-0 shadow-[0_0_0_10000px_rgba(0,0,0,.70)]"
           : "translate-x-full"
@@ -30,7 +29,7 @@ export default function ShoppingCart() {
           &times;
         </button>
       </div>
-      <div className="flex gap-6 flex-col">
+      <div className="flex gap-8 flex-col overflow-auto">
         {cartDetails ? (
           <>
             {cartEntries}

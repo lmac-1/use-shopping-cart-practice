@@ -4,7 +4,7 @@ import { Product as ProductType } from "use-shopping-cart/core";
 import { formatCurrencyString } from "use-shopping-cart/core";
 
 export default function Product({ product }: { product: ProductType }) {
-  const { addItem } = useShoppingCart();
+  const { addItem, shouldDisplayCart } = useShoppingCart();
 
   const [quantity, setQuantity] = useState(1);
 
@@ -17,7 +17,7 @@ export default function Product({ product }: { product: ProductType }) {
 
   return (
     <article className="flex flex-col p-8 shadow-lg gap-3 text-center bg-white rounded-xl mb-6">
-      <div className="text-8xl transition-[font-size] hover:text-[110px] h-[120px] cursor-default">
+      <div className="text-8xl transition-[font-size] hover:text-[110px] hover:duration-150 duration-300 h-[120px] cursor-default">
         {product.emoji}
       </div>
       <div className="text-lg">{product.name}</div>
@@ -46,8 +46,10 @@ export default function Product({ product }: { product: ProductType }) {
         </button>
       </div>
       <button
-        onClick={() => addToCart()}
-        className="bg-emerald-600 text-white rounded-md px-5 py-2"
+        onClick={() => (!shouldDisplayCart ? addToCart() : null)}
+        className={`bg-emerald-600 text-white rounded-md px-5 py-2 ${
+          shouldDisplayCart && "cursor-default"
+        }`}
       >
         Add to cart
       </button>

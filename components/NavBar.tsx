@@ -5,7 +5,7 @@ export default function NavBar() {
   const { cartCount, handleCartClick } = useShoppingCart();
   return (
     <nav className="bg-white px-6 mx-auto py-6 w-100 sm:container lg:max-w-[900px] flex justify-between">
-      <p className="text-5xl font-semibold">fresh</p>
+      <p className="text-5xl font-semibold text-lime-900">fresh</p>
       <button
         className={`relative ${
           !cartCount ? "cursor-default" : "cursor-pointer"
