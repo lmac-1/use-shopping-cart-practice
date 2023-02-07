@@ -6,7 +6,12 @@ export default function NavBar() {
   return (
     <nav className="bg-white px-6 mx-auto py-6 w-100 sm:container lg:max-w-[900px] flex justify-between">
       <p className="text-5xl font-semibold">fresh</p>
-      <button className="relative" onClick={() => handleCartClick()}>
+      <button
+        className={`relative ${
+          !cartCount ? "cursor-default" : "cursor-pointer"
+        }`}
+        onClick={() => (!cartCount ? null : handleCartClick())}
+      >
         <Image
           src="./cart.svg"
           width={40}
