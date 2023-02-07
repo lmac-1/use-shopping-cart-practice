@@ -19,17 +19,19 @@ export default function Layout({ children }: PropsWithChildren<any>) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
-        className={`${
+        className={`min-h-screen bg-[#f8f7f5] ${
           shouldDisplayCart ? "max-h-screen overflow-hidden" : "relative"
         }`}
       >
         <ShoppingCart />
         <NavBar />
         <main
-          className="px-10 bg-[#f8f7f5] py-8"
+          className="px-10 py-8"
           onClick={() => (shouldDisplayCart ? handleCloseCart() : null)}
         >
-          <div className="container mx-auto">{children}</div>
+          <div className="container md:mx-auto md:max-w-[850px]">
+            {children}
+          </div>
         </main>
       </div>
     </>
