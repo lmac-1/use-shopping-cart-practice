@@ -32,19 +32,21 @@ export default function ShoppingCart() {
 
   return (
     <div
-      className={`top-0 bottom-0 right-0 w-screen sm:w-96 bg-white px-5 fixed h-full z-40 ease-in-out duration-300 overflow-y-scroll ${
+      className={`top-0 bottom-0 right-0 w-screen sm:w-96 bg-white fixed h-full z-40 ease-in-out duration-300 overflow-y-scroll ${
         shouldDisplayCart
           ? "translate-x-0 shadow-[0_0_0_10000px_rgba(0,0,0,.70)]"
           : "translate-x-full"
       }`}
     >
-      <div className="flex justify-between my-5">
-        <h2 className="text-2xl">Cart</h2>
-        <button className="text-3xl" onClick={() => handleCloseCart()}>
-          &times;
-        </button>
+      <div className="sticky top-0 bg-white">
+        <div className="flex justify-between px-6 py-5">
+          <h2 className="text-2xl">Cart</h2>
+          <button className="text-3xl" onClick={() => handleCloseCart()}>
+            &times;
+          </button>
+        </div>
       </div>
-      <div className="flex gap-8 flex-col overflow-auto">
+      <div className="flex gap-8 flex-col overflow-auto px-5">
         {cartCount && cartCount > 0 ? (
           <>
             {cartEntries}
