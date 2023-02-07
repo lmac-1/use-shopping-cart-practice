@@ -103,7 +103,7 @@ export const products: Product[] = [
   },
   {
     name: "Melon",
-    id: "",
+    id: "price_1MYxY6GwoRjIvC49tGBrvBp1",
     price: 190,
     emoji: "🍈",
     currency: "GBP",

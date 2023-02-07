@@ -4,9 +4,13 @@ import Image from "next/image";
 export default function CartEntry({
   entry,
   removeItem,
+  incrementItem,
+  decrementItem,
 }: {
   entry: ICartEntry;
   removeItem: (id: string) => undefined;
+  incrementItem: (id: string) => undefined;
+  decrementItem: (id: string) => undefined;
 }) {
   return (
     <div className="flex justify-stretch">
@@ -15,21 +19,30 @@ export default function CartEntry({
         <h3 className="text-md mb-2">{entry.name}</h3>
         <div className="flex justify-between items-center">
           <div className="flex gap-3 items-center">
-            <button className="text-xl">
-              {entry.quantity != 1 ? (
-                "-"
-              ) : (
+            {entry.quantity != 1 ? (
+              <button
+                onClick={() => decrementItem(entry.id)}
+                className="text-xl w-5"
+              >
+                -
+              </button>
+            ) : (
+              <button onClick={() => removeItem(entry.id)}>
                 <Image
                   src="./delete.svg"
                   width={20}
                   height={20}
                   alt="delete icon"
-                  onClick={() => removeItem(entry.id)}
                 />
-              )}
-            </button>
+              </button>
+            )}
             <span>{entry.quantity}</span>
-            <button className="text-xl">+</button>
+            <button
+              onClick={() => incrementItem(entry.id)}
+              className="text-xl w-5"
+            >
+              +
+            </button>
           </div>
           <p className="mr-2 text-md">{entry.formattedValue}</p>
         </div>

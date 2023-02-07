@@ -13,42 +13,6 @@ export default function Home() {
   return (
     <>
       <Products productData={productData} />
-      <div className="mt-5">
-        <div className="flex gap-4 items-center">
-          <Image
-            src="./cart.svg"
-            width={50}
-            height={50}
-            alt="Shopping cart icon"
-          />
-          <div>
-            <p>
-              Number of items:{" "}
-              <span className="font-semibold">{cartCount}</span>
-            </p>
-            <p>
-              Total:{" "}
-              <span className="font-semibold">
-                {totalPrice
-                  ? formatCurrencyString({ value: totalPrice, currency: "GBP" })
-                  : "£0"}
-              </span>
-            </p>
-          </div>
-          <button
-            onClick={() => redirectToCheckout()}
-            className="text-emerald-600 border border-emerald-600 rounded-md px-5 py-2"
-          >
-            Checkout
-          </button>
-          <button
-            onClick={() => clearCart()}
-            className="text-emerald-600 border border-emerald-600 rounded-md px-5 py-2"
-          >
-            Clear cart
-          </button>
-        </div>
-      </div>
       {/* <DebugCart /> */}
     </>
   );

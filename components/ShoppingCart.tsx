@@ -1,6 +1,7 @@
 import { useShoppingCart } from "use-shopping-cart";
 import { formatCurrencyString } from "use-shopping-cart/core";
 import CartEntry from "./CartEntry";
+import CheckoutButton from "./CheckoutButton";
 
 export default function ShoppingCart() {
   const {
@@ -9,11 +10,25 @@ export default function ShoppingCart() {
     cartDetails,
     removeItem,
     totalPrice,
+    clearCart,
+    incrementItem,
+    decrementItem,
+    cartCount,
   } = useShoppingCart();
 
   const cartEntries = Object.values(cartDetails ?? {}).map((entry) => (
-    <CartEntry key={entry.id} entry={entry} removeItem={removeItem} />
+    <CartEntry
+      key={entry.id}
+      entry={entry}
+      removeItem={removeItem}
+      incrementItem={incrementItem}
+      decrementItem={decrementItem}
+    />
   ));
+  const emptyCart = () => {
+    clearCart();
+    handleCloseCart();
+  };
 
   return (
     <div
@@ -30,19 +45,29 @@ export default function ShoppingCart() {
         </button>
       </div>
       <div className="flex gap-8 flex-col overflow-auto">
-        {cartDetails ? (
+        {cartCount && cartCount > 0 ? (
           <>
             {cartEntries}
-            <div className="text-right font-bold text-xl mt-4">
-              Total:{" "}
-              {formatCurrencyString({
-                value: totalPrice || 0,
-                currency: "GBP",
-              })}
+            <div className="flex mt-4 justify-end items-center">
+              {/* todo: Are you sure? pop up */}
+              <button
+                onClick={() => emptyCart()}
+                className="mr-6 underline text-xs mt-1 text-slate-800"
+              >
+                Clear cart
+              </button>
+              <div className="text-right font-bold text-xl">
+                Total:{" "}
+                {formatCurrencyString({
+                  value: totalPrice || 0,
+                  currency: "GBP",
+                })}
+              </div>
             </div>
+            <CheckoutButton />
           </>
         ) : (
-          "No items found"
+          "Your cart is empty"
         )}
       </div>
     </div>

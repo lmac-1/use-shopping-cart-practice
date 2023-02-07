@@ -27,17 +27,14 @@ export default function Product({ product }: { product: ProductType }) {
           currency: product.currency,
         })}
       </div>
-      <div className="flex justify-around mt-4 mb-2">
+      <div className="flex justify-around mt-4 mb-2 items-center">
         <button
           onClick={() => (quantity > 1 ? setQuantity(quantity - 1) : null)}
           className="hover:text-emerald-500 hover:bg-emerald-50 w-8 h-8 rounded-full transition-colors duration-500"
         >
           -
         </button>
-        <input
-          className="border w-10 text-center rounded-md mx-3"
-          value={quantity}
-        ></input>
+        <span className="w-10 text-center rounded-md mx-3">{quantity}</span>
         <button
           onClick={() => setQuantity(quantity + 1)}
           className="hover:text-emerald-500 hover:bg-emerald-50 w-8 h-8 rounded-full transition-colors duration-500"
