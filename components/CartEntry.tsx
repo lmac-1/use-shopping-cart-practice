@@ -1,5 +1,4 @@
 import {
-  CartActions,
   CartEntry as ICartEntry,
   formatCurrencyString,
 } from "use-shopping-cart/core";
@@ -9,7 +8,7 @@ export default function CartEntry({
   removeItem,
 }: {
   entry: ICartEntry;
-  removeItem: CartActions["removeItem"];
+  removeItem: (id: string) => undefined;
 }) {
   return (
     <div>
